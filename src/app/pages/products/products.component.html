@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="container text-center">
+  <h2>Products</h2>
+    <!--card-->
+    <div class="row d-flex">
+
+      <div class="col-6 col-md-4 mt-4 mb-2"  *ngFor="let product of products">
+      <app-card-products (addToCart)="onAddToCart($event)" [product]="product"></app-card-products>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img
+          src="../../../assets/images/register.svg"
+          class="img-fluid"
+          alt="Sample image"
+        />
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <!--card register/login -->
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title lead fw-normal">Register</h4>
+            <form
+              [formGroup]="registerForm"
+              (ngSubmit)="onSave()"
+              autocomplete="'off"
+            >
+              <mdb-form-control>
+                <mdb-error *ngIf="isValidField('name')"
+                  >{{getFieldError('name')}}</mdb-error
+                >
+                <input
+                  mdbInput
+                  formControlName="name"
+                  type="text"
+                  id="form1"
+                  class="form-control mt-4"
+                  autocomplete="off"
+                />
+                <label mdbLabel class="form-label" for="form1">Your Name</label>
+              </mdb-form-control>
+              <mdb-form-control>
+                <input
+                  mdbInput
+                  type="text"
+                  formControlName="lastName"
+                  id="form2"
+                  class="form-control mt-4"
+                  autocomplete="off"
+                />
+                <label mdbLabel class="form-label" for="form2"
+                  >Your Last Name</label
+                >
+                <mdb-error *ngIf="isValidField('lastName')"
+                  >{{getFieldError('lastName')}}</mdb-error
+                >
+              </mdb-form-control>
+              <mdb-form-control>
+                <input
+                  mdbInput
+                  type="email"
+                  id="form3"
+                  formControlName="email"
+                  class="form-control mt-4"
+                  autocomplete="off"
+                />
+                <label mdbLabel class="form-label" for="form3"
+                  >Email Address</label
+                >
+                <mdb-error *ngIf="isValidField('email')"
+                  >{{getFieldError('email')}}</mdb-error
+                >
+              </mdb-form-control>
+              <mdb-form-control>
+                <input
+                  mdbInput
+                  type="password"
+                  id="form4"
+                  formControlName="password"
+                  class="form-control mt-4"
+                  autocomplete="off"
+                />
+                <label mdbLabel class="form-label" for="form4">Password</label>
+                <mdb-error *ngIf="isValidField('password')"
+                  >{{getFieldError('password')}}</mdb-error
+                >
+              </mdb-form-control>
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem"
+                  [disabled]="!registerForm.valid"
+                  mdbRipple
+                >
+                  Register
+                </button>
+                <p class="small fw-bold mt-2 pt-1 mb-0">
+                  You have an account?
+                  <a class="link-danger" routerLink="/login">Login</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--end card-->
+      </div>
+    </div>
+  </div>
+</section>

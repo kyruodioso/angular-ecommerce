@@ -1,0 +1,103 @@
+<div class="container mt-5">
+  <div class="d-flex">
+      <!--Table properties-->
+    <div class="p-2 w-100">
+      <div *ngIf="cart.items.length" class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th>
+                  <button
+                  (click)="onClearCart()"
+                  type="button" class="btn btn-warning">
+                    Clear all
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dataProduct of dataSource" class="text-center">
+                <th scope="row">{{ dataProduct.id }}</th>
+                <td>
+                  <img
+                    src="{{ dataProduct.image }}"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                  />
+                </td>
+                <td class="text-truncate" style="max-width: 150px">{{dataProduct.title}}</td>
+                <td>{{ dataProduct.price | currency }}</td>
+                <td>
+                  <button type="button" class="btn btn-primary btn-floating" mdbRipple (click)="onRemoveQuantity(dataProduct)"><i class="fas fa-xs fa-minus"></i></button>
+                  <span class="h5"> {{ dataProduct.quantity }} </span>
+                  <button type="button" class="btn btn-primary btn-floating" mdbRipple (click)="onAddQuantity(dataProduct)"><i class="fas fa-xs fa-plus"></i></button>
+                </td>
+                <td>{{ dataProduct.price * dataProduct.quantity| currency }}</td>
+                <td class="text-center">
+                  <button
+                  (click)="onRemoveFromCart(dataProduct)"
+                  type="button" class="btn btn-danger btn-floating">
+                    <i class="fas fa-remove"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="text-center"><span class=" badge badge-success rounded-pill d-inline">{{getTotal(cart.items) | currency}}</span></td>
+            </tfoot>
+          </table>
+          <div class="row">
+            <div *ngIf="cart.items.length" class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-info" routerLink="/products">
+                    Continue Shopping
+                  </button>
+                  <button
+                    type="button"
+                    class="btn text-white"
+                    style="background-color: #ac2bac"
+                  >
+                    Payment Total
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div *ngIf="cart.items.length === 0">
+        <header>
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid">
+              <button type="button" class="btn btn-info" routerLink="/products" mdbRipple>Go to products</button>           
+            </div>
+          </nav>
+          <!-- Navbar -->
+        
+          <!-- Jumbotron -->
+          <div class="p-5 text-center bg-light">
+            <img src="../../../assets/images/cat_view.svg" alt="">
+          </div>
+          <!-- Jumbotron -->
+        </header>
+      </div>
+    </div>
+  </div>
+</div>

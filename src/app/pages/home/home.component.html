@@ -1,0 +1,28 @@
+<div class="container-fluid mb-5">
+  <div class="row d-flex justify-content-center align-items-center vh-100 mb-3">
+    <div class="col-sm-5 col-md-6 text-center">
+      <h1 class="display-2">Your Kit!</h1>
+      <h2>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
+        praesentium distinctio qui! Recusandae, ipsam ducimus error tenetur
+        illum accusamus omnis autem eum repudiandae provident rem minima,
+        molestias, nostrum porro debitis.
+      </h2>
+    </div>
+    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+      <div class="bg-image">
+        <img src="../../../assets/images/girl-model.jpg" class="w-100" />
+        <div class="mask" style="background: rgba(251, 251, 251, 0.6)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-3 vh-100">
+    <owl-carousel-o [options]="customOptions" class="mt-3">
+      <ng-container *ngFor="let slide of products">
+        <ng-template carouselSlide id="{{ slide.id }}">
+          <img [src]="slide.image" [alt]="slide.title" [title]="slide.title" />
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>

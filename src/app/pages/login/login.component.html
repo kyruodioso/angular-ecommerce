@@ -1,0 +1,46 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="../../../assets/images/login.svg"
+            class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <!--card register/login -->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title lead fw-normal">Sign in</h4>
+          <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onSave()"
+          autocomplete="'off"
+        >
+          <mdb-form-control>
+            <mdb-error *ngIf="isValidField('email')"
+            >{{getFieldError('email')}}</mdb-error
+          >
+            <input mdbInput type="email" formControlName="email" id="form2" class="form-control mt-4" autocomplete="off"/>
+            <label mdbLabel class="form-label" for="form2">Email Address</label>
+          </mdb-form-control>
+          <mdb-form-control>
+            <mdb-error *ngIf="isValidField('password')"
+            >{{getFieldError('password')}}</mdb-error
+          >
+            <input mdbInput formControlName="password" type="password" id="form1" class="form-control mt-4" autocomplete="off"/>
+            <label mdbLabel class="form-label" for="form1">Password</label>
+          </mdb-form-control>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;" [disabled]="!loginForm.valid">Login</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
+                class="link-danger" routerLink='/register'>Register</a></p>
+          </div>
+          </form>
+        </div>
+      </div>
+      <!--end card-->
+        </div>
+      </div>
+    </div>
+
+  </section>
